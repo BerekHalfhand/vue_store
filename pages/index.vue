@@ -1,38 +1,31 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        vue_store
-      </h1>
-      <h2 class="subtitle">
-        Mock online store built on Vue
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+  <section>
+    <article class="container">
+      <div>
+        <h1 class="title">
+          vue_store
+        </h1>
+        <h2 class="subtitle">
+          Mock online store built on Vue
+        </h2>
+        <div class="links">
+          <a
+            href="https://nuxtjs.org/"
+            target="_blank"
+            class="button--green"
+          >Documentation</a>
+          <a
+            href="https://github.com/nuxt/nuxt.js"
+            target="_blank"
+            class="button--grey"
+          >GitHub</a>
+        </div>
       </div>
-    </div>
+    </article>
   </section>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
 
-export default {
-  components: {
-    Logo
-  }
-}
-</script>
 
 <style>
 .container {

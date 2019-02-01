@@ -28,6 +28,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/app.scss'
   ],
 
   /*
@@ -41,7 +42,13 @@ module.exports = {
   */
   modules: [,
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    [
+      'nuxt-sass-resources-loader',
+      [
+        'assets/scss/app.scss',
+      ]
+    ]
   ],
 
   /*
@@ -52,7 +59,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }

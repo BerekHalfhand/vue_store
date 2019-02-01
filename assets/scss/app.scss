@@ -1,0 +1,26 @@
+$header-height: 90px;
+
+header {
+  height: $header-height;
+  background-color: #505050;
+  // text-align: center;
+}
+
+.nav-buttons {
+  margin-top: 25px;
+  margin-right: 25px;
+}
+
+.touch {
+  cursor: pointer;
+}
+
+.box {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.mw-250 { max-width: 250px; }
+.mw-400 { max-width: 400px; }

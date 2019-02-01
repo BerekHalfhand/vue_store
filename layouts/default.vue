@@ -1,8 +1,19 @@
 <template>
-  <div>
+  <article>
+    <Head />
     <nuxt />
-  </div>
+  </article>
 </template>
+
+<script>
+import Head from '~/components/Head.vue'
+
+export default {
+  components: {
+    Head
+  }
+}
+</script>
 
 <style>
 html {
