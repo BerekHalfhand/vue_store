@@ -1,9 +1,14 @@
 <template>
   <div class="item">
     <div class="thumbnail"></div>
-    <h4 class="box">{{ title }}</h4>
-    <span>Price: {{price}}$</span>
-    <b-button class="float-right" variant="success">Add to cart</b-button>
+    <h4 class="box">{{ item.title }}</h4>
+    <span class="d-inline-block">
+      <span>Price: {{ item.price }}$</span>
+      <br />
+      <span v-if="isCart">In cart: {{ item.counter }}</span>
+    </span>
+    <b-button class="float-right" variant="success" v-on:click="addItem(item)" v-if="!isCart">Add to cart</b-button>
+    <b-button class="float-right" variant="danger" v-on:click="removeItem(item)" v-else>Remove from cart</b-button>
   </div>
 </template>
 
@@ -11,32 +16,29 @@
 
 export default {
   props: {
-    title: {
-      type: String,
-      default: 'Unnamed Item'
+    item: {
+      type: Object,
+      default: function () {
+        return {
+          title: 'Unnamed Item',
+          price: 0,
+          id: Number,
+          counter: Number,
+        }
+      }
     },
-    price: {
-      type: Number,
-      isRequired: true
+    isCart: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  methods: {
+    addItem (item) {
+      this.$store.commit('itemsStore/add', item)
+    },
+    removeItem (item) {
+      this.$store.commit('itemsStore/remove', item)
     },
   }
 }
 </script>
-
-<style>
-.item {
-  width: 300px;
-  height: 300px;
-  border: solid rgba(200,200,200) 1px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
-  padding: 5px;
-}
-
-.thumbnail {
-  width: 100%;
-  height: 200px;
-  background-color: green;
-}
-
-</style>

@@ -1,5 +1,5 @@
 $header-height: 90px;
-$column-width: 300px;
+$item-size: 300px;
 $one-item-layout: 340px;
 $two-item-layout: 660px;
 $three-item-layout: 960px;
@@ -24,17 +24,32 @@ header {
   justify-content: space-evenly;
 
   @media screen and (min-width: $one-item-layout) {
-    grid-template-columns: $column-width;
+    grid-template-columns: $item-size;
   }
   @media screen and (min-width: $two-item-layout) {
-    grid-template-columns: repeat(2, $column-width);
+    grid-template-columns: repeat(2, $item-size);
   }
   @media screen and (min-width: $three-item-layout) {
-    grid-template-columns: repeat(3, $column-width);
+    grid-template-columns: repeat(3, $item-size);
   }
   @media screen and (min-width: $four-item-layout) {
-    grid-template-columns: repeat(4, $column-width);
+    grid-template-columns: repeat(4, $item-size);
   }
+}
+
+.item {
+  width: $item-size;
+  height: $item-size;
+  border: solid rgb(200,200,200) 1px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+  padding: 5px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: calc(#{$item-size} - 100px);
+  background-color: green;
 }
 
 .page-enter-active, .page-leave-active {

@@ -1,22 +1,23 @@
 <template>
   <section>
     <article class="container">
-      <Item title="I'm a long ass title! Hear me roar!" v-bind:price="999"/>
-      <Item title="Title 2!" v-bind:price="333" />
-      <Item title="Title 3!" v-bind:price="444" />
-      <Item title="Hear me roar!" v-bind:price="33" />
-      <Item />
-      <Item />
+      <Item v-for="item in items" v-bind:item="item" />
     </article>
   </section>
 </template>
 
 <script>
 import Item from '~/components/Item.vue'
+//import { mapMutations } from 'vuex'
 
 export default {
   components: {
     Item
-  }
+  },
+  computed: {
+    items () {
+      return this.$store.state.itemsStore.items
+    }
+  },
 }
 </script>
