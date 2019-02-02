@@ -2,8 +2,8 @@
   <header>
     <logo />
     <span class="float-right nav-buttons">
-      <nuxt-link to='/basket'>
-        <b-button variant="warning">Basket</b-button>
+      <nuxt-link to='/cart'>
+        <b-button variant="warning">Cart</b-button>
       </nuxt-link>
       <nuxt-link to='/'>
         <b-button variant="warning">Home</b-button>

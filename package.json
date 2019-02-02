@@ -2,7 +2,7 @@
   "name": "vue_store",
   "version": "1.0.0",
   "description": "Mock online store built on Vue",
-  "author": "Moorindal",
+  "author": "Yuri Drobkov",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
