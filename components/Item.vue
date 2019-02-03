@@ -1,14 +1,19 @@
 <template>
   <div class="item">
-    <div class="thumbnail"></div>
+    <a v-bind:href="item.img" class="thumbnail">
+      <img v-bind:src="item.img" />
+    </a>
     <h4 class="box">{{ item.title }}</h4>
-    <span class="d-inline-block">
-      <span>Price: {{ item.price }}$</span>
-      <br />
-      <span v-if="isCart">In cart: {{ item.counter }}</span>
-    </span>
-    <b-button class="float-right" variant="success" v-on:click="addItem(item)" v-if="!isCart">Add to cart</b-button>
-    <b-button class="float-right" variant="danger" v-on:click="removeItem(item)" v-else>Remove from cart</b-button>
+    <div class="info">
+      <span class="sub-info">
+        <div class="box">Price: {{ item.price }} $</div>
+        <div v-if="isCart" class="box">In cart: {{ item.counter }}</div>
+      </span>
+      <span class="sub-info">
+        <b-button class="float-right" variant="success" v-on:click="addItem(item)" v-if="!isCart">Add to cart</b-button>
+        <b-button class="float-right" variant="danger" v-on:click="removeItem(item)" v-else>Remove</b-button>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -24,6 +29,7 @@ export default {
           price: 0,
           id: Number,
           counter: Number,
+          img: String,
         }
       }
     },

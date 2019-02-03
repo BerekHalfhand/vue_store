@@ -1,7 +1,7 @@
 <template>
   <section>
     <article class="container">
-      <Item v-for="item in cart" v-bind:item="item" v-bind:isCart="true" />
+      <Item v-for="item in cart" v-bind:item="item" v-bind:isCart="true" :key="item.id" />
     </article>
   </section>
 </template>

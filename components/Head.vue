@@ -1,6 +1,8 @@
 <template>
   <header>
-    <logo />
+    <nuxt-link to='/'>
+      <logo />
+    </nuxt-link>
     <span class="float-right nav-buttons">
       <nuxt-link to='/cart'>
         <b-button variant="warning">({{itemsInCart}}) Cart</b-button>

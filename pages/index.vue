@@ -1,7 +1,7 @@
 <template>
   <section>
     <article class="container">
-      <Item v-for="item in items" v-bind:item="item" />
+      <Item v-for="item in items" v-bind:item="item" :key="item.id" />
     </article>
   </section>
 </template>

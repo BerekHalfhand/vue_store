@@ -8,12 +8,15 @@ $four-item-layout: 1240px;
 header {
   height: $header-height;
   background-color: #505050;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .container {
-  margin: 10px auto;
+  margin: calc(#{$header-height} + 10px) auto 10px auto;
   padding: 10px;
-  min-height: 500px;
+  min-height: $item-size;
   min-width: $one-item-layout;
   max-width: $four-item-layout;
   border: solid gray 1px;
@@ -44,13 +47,50 @@ header {
   border-radius: 10px;
   box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
   padding: 5px;
+  display: flex;
+  flex-flow: column;
+
+  h4 {
+    margin: 6px 5px;
+    height: 28px;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: calc(#{$item-size} - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width:100%;
+      max-height:100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .info {
+    position: relative;
+    flex-grow: 1;
+    padding: 0 5px;
+
+    button {
+      position: absolute;
+      right: 5px;
+      bottom: 5px;
+    }
+    .sub-info {
+      display: inline-block;
+      height: 100%;
+      width: calc((#{$item-size} - 22px) / 2);
+      float:left;
+    }
+  }
+
 }
 
-.thumbnail {
-  width: 100%;
-  height: calc(#{$item-size} - 100px);
-  background-color: green;
-}
 
 .page-enter-active, .page-leave-active {
   transition: opacity .5s;
