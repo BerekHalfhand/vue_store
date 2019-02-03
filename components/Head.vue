@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     itemsInCart () {
-      return this.$store.state.itemsStore.itemsInCart
+      return this.$store.state.itemsInCart
     }
   },
 }

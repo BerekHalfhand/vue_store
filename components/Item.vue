@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     addItem (item) {
-      this.$store.commit('itemsStore/add', item)
+      this.$store.commit('add', item)
     },
   }
 }

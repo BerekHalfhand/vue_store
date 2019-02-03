@@ -11,12 +11,16 @@
       </div>
       <div class="info">
         <span class="sub-info">
-          <div class="box">Price: {{ item.price }} $</div>
+          <div class="box">Price: {{ price }} $</div>
           <div class="box">In cart: {{ item.counter }}</div>
         </span>
         <span class="button-container">
-          <b-button class="float-right" variant="danger" v-on:click="removeItem(item)">Remove one</b-button>
-          <b-button class="float-right" variant="danger" v-on:click="removeTheseItems(item)">Remove all {{item.counter}}</b-button>
+          <b-button class="float-right" variant="danger"
+                    v-on:click="removeItem(item)">Remove one
+          </b-button>
+          <b-button class="float-right" variant="danger" v-if="item.counter > 1"
+                    v-on:click="removeTheseItems(item)">Remove all {{item.counter}}
+          </b-button>
         </span>
       </div>
     </section>
@@ -32,21 +36,21 @@ export default {
       default: function () {
         return {
           title: 'Unnamed Item',
-          price: 0,
           id: Number,
           counter: Number,
           img: String,
           thumbnail: String,
         }
       }
-    }
+    },
+    price: Number
   },
   methods: {
     removeItem (item) {
-      this.$store.commit('itemsStore/remove', item)
+      this.$store.commit('remove', item)
     },
     removeTheseItems (item) {
-      this.$store.commit('itemsStore/removeAllThese', item)
+      this.$store.commit('removeAllThese', item)
     },
   }
 }

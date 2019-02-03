@@ -104,7 +104,7 @@ footer {
   display: flex;
 
   .thumbnail-section {
-    width: calc((#{$item-size} - 22px) / 2);
+    width: calc((#{$item-size} - 24px) / 2);
 
     .thumbnail {
       height: 100%;
