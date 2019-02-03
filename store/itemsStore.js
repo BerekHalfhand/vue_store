@@ -13,6 +13,7 @@ export const state = () => ({
   ],
   cart: [],
   itemsInCart: 0,
+  priceTotal: 0,
 })
 
 export const mutations = {
@@ -30,6 +31,7 @@ export const mutations = {
       state.cart.unshift({counter: 1, ...item})
 
     state.itemsInCart++
+    state.priceTotal += item.price
   },
   remove (state, item) {
     let index = state.cart.findIndex(x => x.id === item.id)
@@ -41,6 +43,7 @@ export const mutations = {
       state.cart.splice(index, 1)
 
     state.itemsInCart--
+    state.priceTotal -= item.price
   },
   removeAllThese (state, item) {
     let index = state.cart.findIndex(x => x.id === item.id)
@@ -51,5 +54,11 @@ export const mutations = {
     state.cart.splice(index, 1)
 
     state.itemsInCart -= quantity
+    state.priceTotal -= item.price*quantity
+  },
+  removeAll (state) {
+    state.cart = []
+    state.itemsInCart = 0
+    state.priceTotal = 0
   },
 }
