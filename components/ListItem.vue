@@ -12,7 +12,15 @@
       <div class="info">
         <span class="sub-info">
           <div class="box">Price: {{ price }} $</div>
-          <div class="box">In cart: {{ item.counter }}</div>
+          <div class="box">In cart:
+            <b-button variant="outline-danger" size="sm" v-on:click="removeItem(item)">
+              -
+            </b-button>
+            {{ item.counter }}
+            <b-button variant="outline-success" size="sm" v-on:click="addItem(item)">
+              +
+            </b-button>
+          </div>
         </span>
         <span class="button-container">
           <b-button class="float-right" variant="danger" v-if="item.counter > 1"
@@ -46,6 +54,9 @@ export default {
     price: Number
   },
   methods: {
+    addItem (item) {
+      this.$store.commit('add', item)
+    },
     removeItem (item) {
       this.$store.commit('remove', item)
     },
