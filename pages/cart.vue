@@ -1,7 +1,10 @@
 <template>
   <section>
     <article class="container">
-      <ListItem v-for="item in cart" v-bind:item="item" v-bind:price="getPrice(item)" :key="item.id" />
+      <ListItem v-for="item in cart"
+                v-bind:item="item"
+                v-bind:price="getPrice(item)"
+                :key="item.id" />
       <div class="placeholder" v-if="cart.length == 0">
         <h1>Nobody here but us chickens</h1>
       </div>
@@ -29,16 +32,7 @@ export default {
   },
   methods: {
     getPrice(item) {
-      let index = this.items.findIndex(x => x.id === item.id)
-      if (index > -1) {
-        //read the price from store in case it changed
-        if (this.items[index].price)
-          return this.items[index].price
-        //or from the cart item itself
-        else
-          return item.price
-      }
-
+      return this.$getPrice(this.items, item)
     }
   }
 }

@@ -15,11 +15,11 @@
           <div class="box">In cart: {{ item.counter }}</div>
         </span>
         <span class="button-container">
-          <b-button class="float-right" variant="danger"
-                    v-on:click="removeItem(item)">Remove one
-          </b-button>
           <b-button class="float-right" variant="danger" v-if="item.counter > 1"
                     v-on:click="removeTheseItems(item)">Remove all {{item.counter}}
+          </b-button>
+          <b-button class="float-right" variant="danger"
+                    v-on:click="removeItem(item)">Remove one
           </b-button>
         </span>
       </div>
