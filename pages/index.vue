@@ -1,6 +1,6 @@
 <template>
   <section>
-    <article class="container">
+    <article class="container grid">
       <Item v-for="item in items" v-bind:item="item" :key="item.id" />
     </article>
   </section>

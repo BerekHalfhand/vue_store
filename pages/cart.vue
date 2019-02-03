@@ -1,17 +1,20 @@
 <template>
   <section>
     <article class="container">
-      <Item v-for="item in cart" v-bind:item="item" v-bind:isCart="true" :key="item.id" />
+      <ListItem v-for="item in cart" v-bind:item="item" :key="item.id" />
+      <div class="placeholder" v-if="cart.length == 0">
+        <h1>Nobody here but us chickens</h1>
+      </div>
     </article>
   </section>
 </template>
 
 <script>
-import Item from '~/components/Item.vue'
+import ListItem from '~/components/ListItem.vue'
 
 export default {
   components: {
-    Item
+    ListItem
   },
   computed: {
     cart () {

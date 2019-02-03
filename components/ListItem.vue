@@ -1,8 +1,8 @@
 <template>
-  <div class="item">
+  <div class="list-item">
     <section class="thumbnail-section">
-      <a v-bind:href="item.img" class="img-container">
-        <img v-bind:src="item.img" />
+      <a v-bind:href="item.img" class="thumbnail">
+        <img v-bind:src="item.thumbnail" />
       </a>
     </section>
     <section class="info-section">
@@ -12,9 +12,11 @@
       <div class="info">
         <span class="sub-info">
           <div class="box">Price: {{ item.price }} $</div>
+          <div class="box">In cart: {{ item.counter }}</div>
         </span>
         <span class="button-container">
-          <b-button class="float-right" variant="success" v-on:click="addItem(item)">Add to cart</b-button>
+          <b-button class="float-right" variant="danger" v-on:click="removeItem(item)">Remove one</b-button>
+          <b-button class="float-right" variant="danger" v-on:click="removeTheseItems(item)">Remove all {{item.counter}}</b-button>
         </span>
       </div>
     </section>
@@ -32,14 +34,19 @@ export default {
           title: 'Unnamed Item',
           price: 0,
           id: Number,
+          counter: Number,
           img: String,
+          thumbnail: String,
         }
       }
-    },
+    }
   },
   methods: {
-    addItem (item) {
-      this.$store.commit('itemsStore/add', item)
+    removeItem (item) {
+      this.$store.commit('itemsStore/remove', item)
+    },
+    removeTheseItems (item) {
+      this.$store.commit('itemsStore/removeAllThese', item)
     },
   }
 }
