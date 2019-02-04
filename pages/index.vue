@@ -8,7 +8,6 @@
 
 <script>
 import Item from '~/components/Item.vue'
-//import { mapMutations } from 'vuex'
 
 export default {
   components: {

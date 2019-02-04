@@ -1,14 +1,19 @@
 import faker from 'faker'
 
+//settings
 const cartStorage   = ['vs_cart', 'cart']
 const itemsStorage  = ['vs_items', 'items']
 
+//default state
 export const state = () => ({
   items: [],
   cart: [],
   itemsInCart: 0,
   priceTotal: 0,
 })
+
+// $readStorage, $setStorage and $getPrice are declared in the plugin
+// ~/plugins/commonMethods.js
 
 export const mutations = {
   //populates store with fake items or loads the existing items from localStorage
@@ -41,11 +46,11 @@ export const mutations = {
 
     state.cart.map((item, i) => {
       itemsInCart += item.counter
-      priceTotal += this.$getPrice(state.items, item) * item.counter
+      priceTotal  += this.$getPrice(state.items, item) * item.counter
     })
 
     state.itemsInCart = itemsInCart
-    state.priceTotal = priceTotal
+    state.priceTotal  = priceTotal
   },
 
   //adds item to cart and updates localStorage
@@ -87,7 +92,7 @@ export const mutations = {
     state.cart.splice(index, 1)
 
     state.itemsInCart -= quantity
-    state.priceTotal -= this.$getPrice(state.items, item) * quantity
+    state.priceTotal  -= this.$getPrice(state.items, item) * quantity
     this.$setStorage(...cartStorage, state.cart)
   },
 
