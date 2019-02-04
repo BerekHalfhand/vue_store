@@ -2,6 +2,18 @@
 
 > Mock online store built on Vue
 
+![screenshot](https://screenshotscdn.firefoxusercontent.com/images/b66cd570-b321-47f9-8b87-5f52c6dd2d8c.png)
+
+**Current stack:**
+* NuxtJS
+  * VueJS
+  * NodeJS
+* Webpack
+* Bootstrap 4
+* Unit testing
+  * Jest
+* Sass
+
 ## Build Setup
 
 ``` bash

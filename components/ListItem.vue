@@ -23,11 +23,8 @@
           </div>
         </span>
         <span class="button-container">
-          <b-button class="float-right" variant="danger" v-if="item.counter > 1"
-                    v-on:click="removeTheseItems(item)">Remove all {{item.counter}}
-          </b-button>
           <b-button class="float-right" variant="danger"
-                    v-on:click="removeItem(item)">Remove one
+                    v-on:click="removeTheseItems(item)">Remove all
           </b-button>
         </span>
       </div>

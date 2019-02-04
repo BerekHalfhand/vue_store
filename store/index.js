@@ -19,7 +19,7 @@ export const mutations = {
       for (let i = 0; i < 50; i++) {
         items.push({
           id: i,
-          title: faker.commerce.product(),
+          title: faker.commerce.productName(),
           price: faker.commerce.price(),
           img: faker.random.image(),
         })
@@ -52,14 +52,9 @@ export const mutations = {
   add (state, item) {
     let index = state.cart.findIndex(x => x.id === item.id)
 
-    if (index > -1) {
+    if (index > -1)
       state.cart[index].counter++
-      if (index > 0) {
-        let newItem = Object.assign({}, state.cart[index])
-        state.cart.splice(index, 1)
-        state.cart.unshift(newItem)
-      }
-    } else
+    else
       state.cart.unshift({counter: 1, ...item})
 
     state.itemsInCart++
