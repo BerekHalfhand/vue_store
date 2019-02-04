@@ -7,10 +7,10 @@ export default ({ app }, inject) => {
     if (index > -1) {
       //read the price from store in case it changed
       if (items[index].price)
-        return items[index].price
+        return parseFloat(items[index].price)
       //or from the cart item itself
       else
-        return item.price
+        return parseFloat(item.price)
     }
   })
 

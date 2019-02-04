@@ -2,7 +2,7 @@
   <div class="list-item">
     <section class="thumbnail-section">
       <a v-bind:href="item.img" class="thumbnail">
-        <img v-bind:src="item.thumbnail" />
+        <img v-bind:src="item.thumbnail || item.img" />
       </a>
     </section>
     <section class="info-section">

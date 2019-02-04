@@ -1,29 +1,40 @@
-const storageSettings = ['vs_cart', 'cart']
+import faker from 'faker'
+
+const cartStorage   = ['vs_cart', 'cart']
+const itemsStorage  = ['vs_items', 'items']
 
 export const state = () => ({
-  items: [
-    {id: 0, title: "I'm a long ass title! Hear me roar!", price: 999,
-      img: 'https://via.placeholder.com/600/92c952', thumbnail: 'https://via.placeholder.com/150/92c952'},
-    {id: 1, title: "I'm a title, 2!", price: 303,
-      img: 'https://via.placeholder.com/600/771796', thumbnail: 'https://via.placeholder.com/150/771796'},
-    {id: 2, title: "I'm a title, 3!", price: 400,
-      img: 'https://via.placeholder.com/600/24f355', thumbnail: 'https://via.placeholder.com/150/24f355'},
-    {id: 3, title: "I'm a title, 4!", price: 550,
-      img: 'https://via.placeholder.com/600/d32776', thumbnail: 'https://via.placeholder.com/150/d32776'},
-    {id: 4, title: "I'm a title, 5!", price: 666,
-      img: 'https://via.placeholder.com/600/f66b97', thumbnail: 'https://via.placeholder.com/150/f66b97'},
-  ],
+  items: [],
   cart: [],
   itemsInCart: 0,
   priceTotal: 0,
 })
 
 export const mutations = {
-  //gets cart content from localStorage
-  fetch (state) {
-    let storage = this.$readStorage(...storageSettings)
+  //populates store with fake items or loads the existing items from localStorage
+  storeInit (state) {
+    let {items} = this.$readStorage(...itemsStorage)
 
-    state.cart = storage.cart
+    if (!items.length) {
+      for (let i = 0; i < 50; i++) {
+        items.push({
+          id: i,
+          title: faker.commerce.product(),
+          price: faker.commerce.price(),
+          img: faker.random.image(),
+        })
+      }
+      this.$setStorage(...itemsStorage, items)
+    }
+
+    state.items = items
+  },
+
+  //gets cart content from localStorage
+  fetchCart (state) {
+    let {cart} = this.$readStorage(...cartStorage)
+
+    state.cart = cart
 
     let itemsInCart = 0,
         priceTotal  = 0
@@ -52,8 +63,8 @@ export const mutations = {
       state.cart.unshift({counter: 1, ...item})
 
     state.itemsInCart++
-    state.priceTotal += item.price
-    this.$setStorage(...storageSettings, state.cart)
+    state.priceTotal += parseFloat(item.price)
+    this.$setStorage(...cartStorage, state.cart)
   },
 
   //removes 1 item from cart and updates localStorage
@@ -68,7 +79,7 @@ export const mutations = {
 
     state.itemsInCart--
     state.priceTotal -= this.$getPrice(state.items, item)
-    this.$setStorage(...storageSettings, state.cart)
+    this.$setStorage(...cartStorage, state.cart)
   },
 
   //removes all items of this kind from cart and updates localStorage
@@ -82,7 +93,7 @@ export const mutations = {
 
     state.itemsInCart -= quantity
     state.priceTotal -= this.$getPrice(state.items, item) * quantity
-    this.$setStorage(...storageSettings, state.cart)
+    this.$setStorage(...cartStorage, state.cart)
   },
 
   //removes everything from cart and updates localStorage
@@ -90,6 +101,6 @@ export const mutations = {
     state.cart = []
     state.itemsInCart = 0
     state.priceTotal = 0
-    this.$setStorage(...storageSettings, state.cart)
+    this.$setStorage(...cartStorage, state.cart)
   },
 }

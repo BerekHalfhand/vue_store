@@ -13,12 +13,16 @@ export default {
     Head
   },
   mounted() {
-    this.fetchStorage();
+    this.storeInit()
+    this.fetchCart()
   },
   methods:{
-    fetchStorage(){
-      this.$store.commit('fetch')
-    }
+    fetchCart(){
+      this.$store.commit('fetchCart')
+    },
+    storeInit(){
+      this.$store.commit('storeInit')
+    },
   }
 }
 </script>
