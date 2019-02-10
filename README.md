@@ -1,5 +1,7 @@
 # Vue Store
 
+Demo: http://vue-store.com.s3-website.us-east-2.amazonaws.com/
+
 > Mock online store built on Vue
 
 ![screenshot](https://screenshotscdn.firefoxusercontent.com/images/b66cd570-b321-47f9-8b87-5f52c6dd2d8c.png)
